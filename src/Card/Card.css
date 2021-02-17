@@ -1,6 +1,6 @@
 .card {
   border: 3px solid teal;
-  border-radius: 3px;
+  border-radius: 8px;
   background: rgb(255, 255, 255, 0.95);
   color: teal;
   display: flex;
