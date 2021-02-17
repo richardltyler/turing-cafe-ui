@@ -95,7 +95,7 @@ it('should display a form', () => {
   .contains('7:00pm'); 
  });
 
- it.only('should display res cards with a number of guests', () => {
+ it('should display res cards with a number of guests', () => {
   cy.get('article')
   .get('h5')
   .contains('Number of Guests: 12');
@@ -108,5 +108,4 @@ it('should display a form', () => {
   .get('h5')
   .contains('Number of Guests: 4'); 
  });
-
 })
