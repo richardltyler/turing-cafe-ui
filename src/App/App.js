@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import apiCalls from '../apiCalls';
 import Reservations from '../Reservations/Reservations';
 import './App.css';
 
@@ -10,7 +11,16 @@ class App extends Component {
     };
   }
 
-  
+  componentDidMount = () => {
+    apiCalls.getAllReservations()
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        }
+      })
+      .then(resys => this.setState({ reservations: resys }));
+  }
+
   render() {
     return (
       <div className="App">
