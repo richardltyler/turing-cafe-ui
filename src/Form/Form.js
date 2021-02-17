@@ -13,7 +13,15 @@ class Form extends Component {
   }
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    let inputValue = event.target.value
+    if (event.target.name === 'date') {
+      const resDateArr = inputValue.split('-');
+      const resDate = resDateArr.slice(1);
+      inputValue = resDate.join('/');
+
+    }
+    
+    this.setState({ [event.target.name]: inputValue });
   }
 
   submitNewRes = event => {
@@ -50,7 +58,7 @@ class Form extends Component {
         />
 
         <input
-          type='text'
+          type='date'
           placeholder='Date'
           name='date'
           value={this.state.date}

@@ -122,7 +122,7 @@ describe('Turing Cafe', () => {
       .should('have.value', '02/17');
   });
 
-  it.only('should be able to type into the time field', () => {
+  it('should be able to type into the time field', () => {
     cy.get('input[name=time]')
       .type('8:00')
       .should('have.value', '8:00');
