@@ -20,7 +20,7 @@ class Form extends Component {
       inputValue = resDate.join('/');
 
     }
-    
+
     this.setState({ [event.target.name]: inputValue });
   }
 
@@ -74,7 +74,8 @@ class Form extends Component {
         />
 
         <input
-          type='text'
+          type='number'
+          min='0'
           placeholder='Number of Guests'
           name='number'
           value={this.state.number}
