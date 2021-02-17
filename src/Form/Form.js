@@ -8,7 +8,7 @@ class Form extends Component {
       name: '',
       date: '',
       time: '',
-      number: 0
+      number: ''
     };
   }
 
@@ -19,51 +19,39 @@ class Form extends Component {
   render() {
     return (
       <form className='form'>
-        <label>
-          Name
-          <input
-            type='text'
-            placeholder='Name'
-            name='name'
-            value={this.state.name}
-            onChange={event => this.handleChange(event)}
-          />
-        </label>
+        <input
+          type='text'
+          placeholder='Name'
+          name='name'
+          value={this.state.name}
+          onChange={event => this.handleChange(event)}
+        />
 
-        <label>
-          Date
-          <input
-            type='text'
-            placeholder='Date'
-            name='date'
-            value={this.state.date}
-            onChange={event => this.handleChange(event)}
-          />
-        </label>
+        <input
+          type='text'
+          placeholder='Date'
+          name='date'
+          value={this.state.date}
+          onChange={event => this.handleChange(event)}
+        />
 
-        <label>
-          Time
-          <input
-            type='text'
-            placeholder='Time'
-            name='time'
-            value={this.state.time}
-            onChange={event => this.handleChange(event)}
-          />
-        </label>
+        <input
+          type='text'
+          placeholder='Time'
+          name='time'
+          value={this.state.time}
+          onChange={event => this.handleChange(event)}
+        />
 
-        <label>
-          Number of Guests
-          <input
-            type='text'
-            placeholder='Number of Guests'
-            name='number'
-            value={this.state.number}
-            onChange={event => this.handleChange(event)}
-          />
-        </label>
+        <input
+          type='text'
+          placeholder='Number of Guests'
+          name='number'
+          value={this.state.number}
+          onChange={event => this.handleChange(event)}
+        />
 
-        <button>SUBMIT</button>
+        <button>Make Reservation</button>
       </form>
     )
   }
