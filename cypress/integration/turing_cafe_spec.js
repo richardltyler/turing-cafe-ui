@@ -134,4 +134,38 @@ describe('Turing Cafe', () => {
       .type('4')
       .should('have.value', '4');
   });
+
+  it.only('should be able to add a new reservation', () => {
+    // cy.fixture('Reservations-data.json')
+    //   .then(resys => {
+    //     cy.intercept('http://localhost:3001/api/v1/reservations', {
+    //       method: 'POST',
+    //       headers: {
+    //         "Content-type": "apllication/json"
+    //       },
+    //       body: resys
+    //     });
+    //   });
+
+    cy.get('article')
+      .its('length').should('eq', 3);
+    
+    cy.get('input[name=name]')
+      .type('Richard');
+    
+    cy.get('input[name=date')
+      .type('2020-01-20');
+    
+    cy.get('input[name=time]')
+      .type('8:00');
+
+    cy.get('input[name=number]')
+      .type(5);
+    
+    cy.get('form button')
+        .click();
+
+    // cy.visit(baseUrl);
+  })
+
 })
