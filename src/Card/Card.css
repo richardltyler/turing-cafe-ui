@@ -1,0 +1,18 @@
+.card {
+  border: 3px solid teal;
+  border-radius: 3px;
+  background: rgb(255, 255, 255, 0.95);
+  color: teal;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card * {
+  margin: 0;
+}
+
+.card>button {
+  width: 120px;
+}

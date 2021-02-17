@@ -9,9 +9,9 @@ const Reservations = ({ resys }) => {
         id={resy.id}
         key={resy.id}
         name={resy.name}
-        data={resy.date}
+        date={resy.date}
         time={resy.time}
-        number={resy.time}
+        number={resy.number}
       />
     )
   })
