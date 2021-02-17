@@ -14,6 +14,7 @@ class Form extends Component {
 
   handleChange = event => {
     let inputValue = event.target.value
+    
     if (event.target.name === 'date') {
       const resDateArr = inputValue.split('-');
       const resDate = resDateArr.slice(1);
