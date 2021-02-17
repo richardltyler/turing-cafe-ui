@@ -16,6 +16,28 @@ class Form extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  submitNewRes = event => {
+    event.preventDefault();
+  
+    const newRes = {
+      id: Date.now(),
+      ...this.state
+    };
+
+    if (this.checkAllInputs()) {
+      this.props.makeNewRes(newRes);
+      this.clearInputs();
+    }
+  }
+
+  checkAllInputs() {
+    return Object.values(this.state).some(value => !!value);
+  }
+
+  clearInputs() {
+    this.setState({ name: '', date: '', time: '', number: '' })
+  }
+
   render() {
     return (
       <form className='form'>
@@ -51,7 +73,7 @@ class Form extends Component {
           onChange={event => this.handleChange(event)}
         />
 
-        <button>Make Reservation</button>
+        <button onClick={event => this.submitNewRes(event)}>Make Reservation</button>
       </form>
     )
   }

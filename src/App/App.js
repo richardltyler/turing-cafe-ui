@@ -22,11 +22,21 @@ class App extends Component {
       .then(resys => this.setState({ reservations: resys }));
   }
 
+  makeReservation = (newRes) => {
+    apiCalls.makeNewRes(newRes)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then(resy => this.setState({ reservations: [resy, ...this.state.reservations] }))
+  }
+
   render() {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <Form />
+        <Form makeNewRes={newRes => this.makeReservation(newRes)} />
         <Reservations resys={this.state.reservations} />
       </div>
     )
