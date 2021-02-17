@@ -13,6 +13,10 @@ class App extends Component {
   }
 
   componentDidMount = () => {
+    this.getReservations();
+  }
+
+  getReservations = () => {
     apiCalls.getAllReservations()
       .then(response => {
         if (response.ok) {
@@ -29,7 +33,7 @@ class App extends Component {
           return response.json();
         }
       })
-      .then(resy => this.setState({ reservations: [resy, ...this.state.reservations] }))
+      .then(() => this.getReservations());
   }
 
   render() {
