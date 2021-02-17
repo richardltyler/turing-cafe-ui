@@ -36,12 +36,22 @@ class App extends Component {
       .then(() => this.getReservations());
   }
 
+  cancelReservation= (id) => {
+    apiCalls.deleteRes(id)
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        }
+      })
+      .then(() => this.getReservations());
+  }
+
   render() {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <Form makeNewRes={newRes => this.makeReservation(newRes)} />
-        <Reservations resys={this.state.reservations} />
+        <Reservations resys={this.state.reservations} cancelRes={id => this.cancelReservation(id)} />
       </div>
     )
   }

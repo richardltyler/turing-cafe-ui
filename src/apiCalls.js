@@ -19,6 +19,12 @@ const apiCalls = {
     return (
       fetch(baseUrl, options)
     );
+  },
+
+  deleteRes(id) {
+    return (
+      fetch(`${baseUrl}/${id}`, { method: 'DELETE' })
+    );
   }
 
 }

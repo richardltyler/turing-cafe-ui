@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../Card/Card';
 import './Reservations.css';
 
-const Reservations = ({ resys }) => {
+const Reservations = ({ resys, cancelRes }) => {
   const resyCards = resys.map(resy => {
     return (
       <Card 
@@ -12,6 +12,7 @@ const Reservations = ({ resys }) => {
         date={resy.date}
         time={resy.time}
         number={resy.number}
+        cancelRes={cancelRes}
       />
     )
   })
