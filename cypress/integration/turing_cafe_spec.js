@@ -2,6 +2,13 @@ describe('Turing Cafe', () => {
   const baseUrl = 'http://localhost:3000/';
 
   beforeEach(() => {
+    cy.fixture('Reservations-data.json')
+      .then(resys => {
+        cy.intercept('http://localhost:3001/api/v1/reservations', {
+          body: resys
+        })
+      });
+
     cy.visit(baseUrl);
   });
 
@@ -39,5 +46,11 @@ it('should display a form', () => {
    cy.get('form button');
  });
 
+ it('should display reservation cards', () => {
+   cy.get('section')
+    .children()
+    .its('length')
+    .should('eq', 3);
+ });
 
 })
