@@ -59,54 +59,78 @@ describe('Turing Cafe', () => {
     .get('h2')
     .contains('Christie');
 
-  cy.get('article')
-    .get('h2')
-    .contains('Leta');
+    cy.get('article')
+      .get('h2')
+      .contains('Leta');
 
-  cy.get('article')
-    .get('h2')
-    .contains('Pam');
+    cy.get('article')
+      .get('h2')
+      .contains('Pam');
   });
 
   it('should display res cards with a date', () => {
-  cy.get('article')
-    .get('h3')
-    .contains('12/29');
+    cy.get('article')
+      .get('h3')
+      .contains('12/29');
 
-  cy.get('article')
-    .get('h3')
-    .contains('4/5');
+    cy.get('article')
+      .get('h3')
+      .contains('4/5');
 
-  cy.get('article')
-    .get('h3')
-    .contains('1/21'); 
+    cy.get('article')
+      .get('h3')
+      .contains('1/21'); 
   });
 
   it('should display res cards with a time', () => {
-  cy.get('article')
-    .get('h4')
-    .contains('7:00pm');
+    cy.get('article')
+      .get('h4')
+      .contains('7:00pm');
 
-  cy.get('article')
-    .get('h4')
-    .contains('7:00pm');
+    cy.get('article')
+      .get('h4')
+      .contains('7:00pm');
 
-  cy.get('article')
-    .get('h4')
-    .contains('7:00pm'); 
+    cy.get('article')
+      .get('h4')
+      .contains('7:00pm'); 
   });
 
   it('should display res cards with a number of guests', () => {
-  cy.get('article')
-    .get('h5')
-    .contains('Number of Guests: 12');
+    cy.get('article')
+      .get('h5')
+      .contains('Number of Guests: 12');
 
-  cy.get('article')
-    .get('h5')
-    .contains('Number of Guests: 2');
+    cy.get('article')
+      .get('h5')
+      .contains('Number of Guests: 2');
 
-  cy.get('article')
-    .get('h5')
-    .contains('Number of Guests: 4'); 
+    cy.get('article')
+      .get('h5')
+      .contains('Number of Guests: 4'); 
+  });
+
+  it('should be able to type into the name field', () => {
+    cy.get('input[name=name]')
+      .type('Richard')
+      .should('have.value', 'Richard');
+  });
+
+  it('should be able to type into the date field', () => {
+    cy.get('input[name=date]')
+      .type('02/17')
+      .should('have.value', '02/17');
+  });
+
+  it.only('should be able to type into the time field', () => {
+    cy.get('input[name=time]')
+      .type('8:00')
+      .should('have.value', '8:00');
+  });
+
+  it('should be able to type into the number of guests field', () => {
+    cy.get('input[name=number]')
+      .type('4')
+      .should('have.value', '4');
   });
 })
