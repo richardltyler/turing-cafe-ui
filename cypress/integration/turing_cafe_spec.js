@@ -116,12 +116,11 @@ describe('Turing Cafe', () => {
       .should('have.value', 'Richard');
   });
 
-  //  this test should definitely be implemented but I can't figure out how to test its value with this input type
-  // it('should be able to type into the date field', () => {
-  //   cy.get('input[name=date]')
-  //     .type('2020-02-17')
-  //     .should('have.value', '2020-02-17');
-  // });
+  it('should be able to type into the date field', () => {
+    cy.get('input[name=date]')
+      .type('2-17')
+      .should('have.value', '2-17');
+  });
 
   it('should be able to type into the time field', () => {
     cy.get('input[name=time]')
@@ -136,25 +135,14 @@ describe('Turing Cafe', () => {
   });
 
   it.only('should be able to add a new reservation', () => {
-    // cy.fixture('Reservations-data.json')
-    //   .then(resys => {
-    //     cy.intercept('http://localhost:3001/api/v1/reservations', {
-    //       method: 'POST',
-    //       headers: {
-    //         "Content-type": "apllication/json"
-    //       },
-    //       body: resys
-    //     });
-    //   });
-
     cy.get('article')
       .its('length').should('eq', 3);
     
     cy.get('input[name=name]')
       .type('Richard');
     
-    cy.get('input[name=date')
-      .type('2020-01-20');
+    cy.get('input[name=date]')
+      .type('2-20');
     
     cy.get('input[name=time]')
       .type('8:00');
@@ -164,8 +152,5 @@ describe('Turing Cafe', () => {
     
     cy.get('form button')
         .click();
-
-    // cy.visit(baseUrl);
-  })
-
+  });
 })

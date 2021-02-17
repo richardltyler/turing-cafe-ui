@@ -13,14 +13,7 @@ class Form extends Component {
   }
 
   handleChange = event => {
-    let inputValue = event.target.value
-    
-    if (event.target.name === 'date') {
-      const resDateArr = inputValue.split('-');
-      const resDate = resDateArr.slice(1);
-      inputValue = resDate.join('/');
-
-    }
+    let inputValue = event.target.value;
 
     this.setState({ [event.target.name]: inputValue });
   }
@@ -59,7 +52,7 @@ class Form extends Component {
         />
 
         <input
-          type='date'
+          type='text'
           placeholder='Date'
           name='date'
           value={this.state.date}
