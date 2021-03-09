@@ -33,7 +33,12 @@ class App extends Component {
           return response.json();
         }
       })
-      .then(() => this.getReservations());
+      // // This line makes the app immediately call from the api to reset state based off the api.
+      // // Basically, gets immediately after the post
+      // .then(() => this.getReservations());
+
+      // // This line works better for testing cypress. It fires after the post has already happened, and then it sets the newRes from the parameter to the state. Technically, a passing test will assume that since the dom has updated from this setState, then the response must have been ok so it passes.
+      .then(() => this.setState({ reservations: [...this.state.reservations, newRes] }));
   }
 
   cancelReservation= (id) => {
@@ -43,6 +48,8 @@ class App extends Component {
           return response.json()
         }
       })
+      // // here you could prolly follow the same concept by going with setState instead with filtered results based on the id passed into the parameters. Something like line 52 (maybe not exactly like; I didn't test this part before sending these notes lmaoooooooo):
+      // .then(() => this.setState({ reservations: this.state.reservations.filter(res => res.id !== id)}))
       .then(() => this.getReservations());
   }
 

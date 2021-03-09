@@ -4,10 +4,23 @@ describe('Turing Cafe', () => {
   beforeEach(() => {
     cy.fixture('Reservations-data.json')
       .then(resys => {
-        cy.intercept('http://localhost:3001/api/v1/reservations', {
+        cy.intercept('GET', 'http://localhost:3001/api/v1/reservations', {
           body: resys
         })
       });
+    // so the body in a POST intercept should be the response from the api after a successful post. You can get this from a fixture, but I have not done it yet. I do have the data in the body in post_spec.json if you wanna try to figure it out how to use a fixture though
+    cy.intercept('POST', 'http://localhost:3001/api/v1/reservations', {
+      statusCode: 200,
+      body: { 
+        "id": 18939837, 
+        "name": "Leta", 
+        "date": "12/3", 
+        "time": "6:30", 
+        "number": 2 
+      }
+    })
+
+    //checkout the last it block below for notes on how I actually made the test 
 
     cy.visit(baseUrl);
   });
@@ -136,8 +149,10 @@ describe('Turing Cafe', () => {
 
   it.only('should be able to add a new reservation', () => {
     cy.get('article')
+    // here I'm testing the amount of reservations before making the POST
       .its('length').should('eq', 3);
     
+    // my app is built to not allow the button to work without all the inputs having a value so skip to line 171 for the rest of the post testing
     cy.get('input[name=name]')
       .type('Richard');
     
@@ -151,6 +166,9 @@ describe('Turing Cafe', () => {
       .type(5);
     
     cy.get('form button')
-        .click();
+      .click();
+    
+    // here i'm testing that there is one additional reservation displayed on the dom. Since after the POST, we setState from the newRes rather than a whole ass GET (see App.js), and setState is only called if the response is ok, then there would only be one additional res on the DOM if the POST was successful 
+    cy.get('article').should('have.length', 4)
   });
 })
