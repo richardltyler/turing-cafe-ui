@@ -20,7 +20,7 @@ describe('Turing Cafe', () => {
       }
     })
 
-    //checkout the last it block below for notes on how I actually made the test 
+    //checkout the last it block at line 150 for notes on how I actually made the test 
 
     cy.visit(baseUrl);
   });
